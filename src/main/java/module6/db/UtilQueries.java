@@ -8,7 +8,8 @@ import java.sql.Statement;
 import java.util.List;
 
 public class UtilQueries {
-    public UtilQueries(String filePath) {
+
+    public void executeSetQueries(String filePath) {
         List<String> queries = new ParseSQLFile(filePath).getListSQLQuery();
         try {
             Connection connection = Database.getInstance().getConnection();

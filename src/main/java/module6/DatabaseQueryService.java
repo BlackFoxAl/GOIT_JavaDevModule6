@@ -26,8 +26,8 @@ public class DatabaseQueryService {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                maxProjectCountClients.add(new MaxProjectCountClient(rs.getString(1),
-                                                                     rs.getInt(2) ));
+                maxProjectCountClients.add(new MaxProjectCountClient(rs.getString("name"),
+                                                                     rs.getInt("project_count") ));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -42,7 +42,7 @@ public class DatabaseQueryService {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                longestProjects.add(new LongestProject(rs.getString(1),rs.getInt(2) ));
+                longestProjects.add(new LongestProject(rs.getString("name"),rs.getInt("mounth_count") ));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -57,8 +57,8 @@ public class DatabaseQueryService {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                maxSalaryWorkers.add(new MaxSalaryWorker(rs.getString(1),
-                        rs.getInt(2) ));
+                maxSalaryWorkers.add(new MaxSalaryWorker(rs.getString("name"),
+                        rs.getInt("salary") ));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -74,8 +74,8 @@ public class DatabaseQueryService {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                youngestEldestWorkers.add(new YoungestEldestWorker(rs.getString(1),
-                        rs.getString(2), LocalDate.parse(rs.getString(3))));
+                youngestEldestWorkers.add(new YoungestEldestWorker(rs.getString("type"),
+                        rs.getString("name"), LocalDate.parse(rs.getString("birthday"))));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -91,8 +91,8 @@ public class DatabaseQueryService {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                projectPrices.add(new ProjectPrice(rs.getString(1),
-                        rs.getInt(2) ));
+                projectPrices.add(new ProjectPrice(rs.getString("name"),
+                        rs.getInt("price") ));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
